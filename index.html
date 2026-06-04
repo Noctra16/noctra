@@ -165,6 +165,32 @@ nav a:hover{color:var(--purple-soft);}
     transform:scale(1.05);
 }
 
+/* WALLET BUTTON (NOW IN HERO) */
+#walletBtn{
+    margin-top:30px;
+    padding:12px 18px;
+    border:1px solid var(--gold);
+    background:rgba(0,0,0,0.4);
+    color:var(--gold);
+    border-radius:10px;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    transition:.3s;
+    font-size:0.9rem;
+}
+
+#walletBtn:hover{
+    background:var(--gold);
+    color:black;
+    transform:scale(1.05);
+}
+
+#walletInfo{
+    margin-top:10px;
+    font-size:12px;
+    color:#aaa;
+}
+
 .section{padding:120px 10%; position:relative; z-index:2;}
 
 .section-title{
@@ -241,6 +267,10 @@ nav ul{display:none;}
 
 <h1>NOCTRA</h1>
 <p class="subtitle">From Shadows, Empires Rise</p>
+
+<!-- WALLET BUTTON MOVED HERE -->
+<button id="walletBtn">Connect Wallet</button>
+<div id="walletInfo"></div>
 
 <p>
 A dark fantasy 2v2 MOBA where players build fortified bases,
@@ -334,6 +364,7 @@ Command armies of soldiers and creatures while fighting directly as your charact
 </footer>
 
 <script>
+// PARTICLES
 for(let i=0;i<40;i++){
     let p=document.createElement("div");
     p.className="particle";
@@ -342,6 +373,36 @@ for(let i=0;i<40;i++){
     p.style.animationDelay=Math.random()*5+"s";
     document.body.appendChild(p);
 }
+
+// WALLET CONNECT (EVM COMPATIBLE)
+const btn = document.getElementById("walletBtn");
+const info = document.getElementById("walletInfo");
+
+btn.onclick = async () => {
+    if (!window.ethereum) {
+        alert("Install MetaMask / Rainbow / Coinbase Wallet");
+        return;
+    }
+
+    try {
+        const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts"
+        });
+
+        const address = accounts[0];
+
+        info.innerText =
+            "Connected: " +
+            address.slice(0,6) +
+            "..." +
+            address.slice(-4);
+
+        btn.innerText = "Wallet Connected";
+
+    } catch (err) {
+        console.error(err);
+    }
+};
 </script>
 
 </body>
