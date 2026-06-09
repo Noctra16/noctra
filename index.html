@@ -104,8 +104,14 @@ nav ul{
     gap:30px;
 }
 
-nav a{color:white;text-decoration:none;}
-nav a:hover{color:var(--purple-soft);}
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:var(--purple-soft);
+}
 
 .hero{
     min-height:100vh;
@@ -113,12 +119,15 @@ nav a:hover{color:var(--purple-soft);}
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:120px 10% 0; /* ✅ FIX HEADER OVERLAP */
+    padding:120px 10% 0;
     position:relative;
     z-index:2;
 }
 
-.hero-content{max-width:950px;}
+.hero-content{
+    max-width:950px;
+    transform:translateY(-25px);
+}
 
 .hero h1{
     font-family:'Cinzel',serif;
@@ -145,7 +154,6 @@ nav a:hover{color:var(--purple-soft);}
     color:#d7d7d7;
 }
 
-/* BUTTON */
 .btn{
     display:inline-block;
     margin-top:40px;
@@ -165,7 +173,11 @@ nav a:hover{color:var(--purple-soft);}
     transform:scale(1.05);
 }
 
-.section{padding:120px 10%; position:relative; z-index:2;}
+.section{
+    padding:120px 10%;
+    position:relative;
+    z-index:2;
+}
 
 .section-title{
     text-align:center;
@@ -201,8 +213,15 @@ nav a:hover{color:var(--purple-soft);}
     box-shadow:0 0 40px rgba(109,40,217,.25);
 }
 
-.card h3{color:var(--purple-soft);margin-bottom:15px;}
-.card p{color:#cfcfcf;line-height:1.8;}
+.card h3{
+    color:var(--purple-soft);
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cfcfcf;
+    line-height:1.8;
+}
 
 .footer{
     padding:40px;
@@ -214,9 +233,13 @@ nav a:hover{color:var(--purple-soft);}
 }
 
 @media(max-width:768px){
-.hero h1{font-size:3.5rem;}
-nav ul{display:none;}
-.section-title{font-size:2.2rem;}
+    .hero h1{font-size:3.5rem;}
+    nav ul{display:none;}
+    .section-title{font-size:2.2rem;}
+
+    .hero-content{
+        transform:translateY(-15px);
+    }
 }
 </style>
 </head>
